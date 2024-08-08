@@ -1,0 +1,40 @@
+# camera information  (just comment not for program)
+IDS_camera_version: "U3-3041le-REV"
+ecodeing_version: "MONO"
+product_url: "https://cn.ids-imaging.com/store/products/cameras/u3-3041le-rev-1-2.html"
+
+# camera name
+camera_name: "left_camera"
+# camera topic
+camera_topic: "/IDS/left_camera/image_raw"
+# camera topic rate
+frame_rate: 4 
+
+# we use IDS GUI to set some parameters as follo as we recommand
+# because we can keep the best performance while camera is limited around 200Hz
+# camera exposure time
+exposure_time: 30000.00 #4739.66
+
+# whether to use CLAHE to strength Image
+use_CLAHE: false
+
+# set bright parameters
+bright_gain: 5    
+bright_target: 150   
+bright_target_toler: 0  
+bright_percentile: 0
+
+# set ROI of brightness balance 
+bright_ROI_start_X: 1448    
+bright_ROI_start_Y: 1084   
+bright_ROI_end_X: 13.0   
+bright_ROI_end_Y: 3.0   
+
+# set ROI of write balance 
+write_balance_ROI_start_X: 0.0    
+write_balance_ROI_start_Y: 0.0   
+write_balance_ROI_end_X: 1448   
+write_balance_ROI_end_Y: 1084
+
+# set buffer time to catch image
+wait_for_buffer_time: 0

@@ -1,0 +1,32 @@
+<launch>
+    <!-- parameter file for ids camera -->
+    <arg name="param_file" default="$(find ids_ros_driver)/config/camera.yaml" />
+
+    <!-- differ two camera if use stereo -->
+    <!-- note this name and topic should sync with same topic in config.yaml -->
+    <arg name="left_camera_name"  default="left_camera"/>
+    <arg name="left_camera_topic" default= "/IDS/left_camera/image_raw"/>
+    <arg name="right_camera_name"  default="right_camera"/>
+    <arg name="right_camera_topic" default= "/IDS/right_camera/image_raw"/>
+
+    <!-- launch left camera node -->
+    <node name="ids_left_driver" pkg="ids_ros_driver" type = "ids_ros_driver_node" required="true" output = "screen">
+        <rosparam file="$(arg param_file)" command="load"/>
+        <param name="camera_name" type="string" value="$(arg left_camera_name)"/>
+        <param name="camera_topic" type="string" value="$(arg left_camera_topic)"/>
+    </node>
+
+    <!-- launch right camera node -->
+    <node name="ids_right_driver" pkg="ids_ros_driver" type = "ids_ros_driver_node" required="true" output = "screen">
+        <rosparam file="$(arg param_file)" command="load"/>
+        <param name="camera_name" type="string" value="$(arg right_camera_name)"/>
+        <param name="camera_topic" type="string" value="$(arg right_camera_topic)"/>
+    </node>
+
+    <!-- left camera Image Compressed topic -->
+    <node name="left_image_transport" pkg="image_transport" type="republish" args="raw in:=$(arg left_camera_topic) compressed out:=$(arg left_camera_topic)" />
+
+    <!-- right camera Image Compressed topic -->
+    <node name="right_image_transport" pkg="image_transport" type="republish" args="raw in:=$(arg right_camera_topic) compressed out:=$(arg right_camera_topic)" />
+
+</launch>
