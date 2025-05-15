@@ -20,3 +20,27 @@ or
 
 catkin_make
 ```
+
+#### Fix issue that include file error
+Fix IDS_Camera.h line13-17
+```
+// Add IDS peak library
+#include <peak/peak.hpp>
+#include <peak_ipl/peak_ipl.hpp>
+#include <peak/peak_buffer_converter.hpp>
+#include <peak/converters/peak_buffer_converter_ipl.hpp>
+```
+For the problem that it cannot be found, enter the dpkg installation path:
+```cd /usr/include```
+Redirect:
+```
+sudo cp ids_peak-1.8.0/ ./
+sudo cp ids_peak_afl-1.6.0/ ./
+sudo cp ids_peak_ipl-1.12.1/ ./
+```
+Then
+```
+catkin build ids_ros_driver
+or
+catkin_make
+```
