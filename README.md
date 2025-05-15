@@ -30,10 +30,9 @@ Fix IDS_Camera.h line13-17
 #include <peak/peak_buffer_converter.hpp>
 #include <peak/converters/peak_buffer_converter_ipl.hpp>
 ```
-For the problem that it cannot be found, enter the dpkg installation path:
-```cd /usr/include```
-Redirect:
+For the problem that it cannot be found, enter the dpkg installation path and redirect:
 ```
+cd /usr/include/
 sudo cp ids_peak-1.8.0/ ./
 sudo cp ids_peak_afl-1.6.0/ ./
 sudo cp ids_peak_ipl-1.12.1/ ./
